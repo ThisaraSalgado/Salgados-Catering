@@ -3,10 +3,14 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Contact Us</title>
-    <link type="text/css" href="styles/style.css" rel="stylesheet" />
+	<link type="text/css" href="styles/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link type="text/css" href="styles/style.css" rel="stylesheet" />
     <!--script src="js/jquery-1.7.1.js"></script>
-	
-	<!-- JAVASCRIPT-->
+
+	<!-- JAVASCRIPT
 	<script type="text/javascript">
 			$(document).ready(function(){
 
@@ -208,9 +212,7 @@
 	
 </head>
 <body>
-	<!-- FORM LOGIN OR REGISTER AND POPUP FORMS-->
-	
-	
+	<?php include'connect.php'; ?>
 	<!-- BEGIN THIS IS FOR BLACK BACKGROUND -->
 	<div id="black">
 	
@@ -228,15 +230,15 @@
 			<!-- END FORM TITLE -->
 					
 					<!-- BEGIN REGISTER FORM -->
-					<form id="formRegister" method="post" action="javascript:void(0);">
+					<form id="formRegister" method="post" action="signup.php">
 						<div class="formArea">
 							<table >
 								<tr>
 									<input type="hidden" name="valid" value="" />
-									<td><input type="text" id="name"  class="input" name="name" value="" placeholder="Please enter your username" required /></td>
-								</tr>
+									<td><input type="text" id="name"  class="input" name="name" value="" placeholder="Please enter your username" required /></td></tr>
 								<tr>
-									<td><input type="email" id="mail"  class="input" name="mail" value="" placeholder="Please enter your e-mail" required /></td>
+
+									<td><input type="email" id="mail"  class="input" name="email" value="" placeholder="Please enter your e-mail" required /></td>
 								</tr>
 								<tr>
 									<td><input type="password" id="password"  class="input" name="registerPassword" value="" placeholder="Please enter your password" required /></td>
@@ -253,7 +255,7 @@
 					<!-- END REGISTER FORM -->
 					
 					<!-- BEGIN LOGIN FORM -->
-					<form id="formLogin" method="post" action="javascript:void(0);">
+					<form id="formLogin" method="post" action="signin.php" >
 						<div class="formArea" style="float:right;">
 							<table >
 								<tr>
@@ -272,7 +274,7 @@
 									<td colspan="2"><input type="password" id="password"  class="input" name="password" value="" placeholder="Please enter your password" required /></td>
 								</tr>
 								<tr>
-									<td colspan="2"><input type="submit" id="btnLogin"  class="button" name="btnSubmit" value="" /></td>
+									<td colspan="2"><input type="submit" id="btnLogin"  name="submit"  class="button" name="btnSubmit" value="" /></td>
 								</tr>
 							</table><!-- end div table -->
 						</div><!-- end div .formArea -->
@@ -283,42 +285,66 @@
 			<!-- BEGIN FOOTER -->
 			<div class="footer">
 				<div id="forgot" >
-					Forgot your Password or Username ?
+					<a data-toggle="modal" style="color: red" data-target="#myModal">Forgot your Password or Username ?</a>
 				</div> <!-- end div #forgot -->
 				</br> 
-				<div id="changePassword" >
-					Change Your Password
-				</div> <!-- end div #changePassword -->
-			</div> <!-- end div .footer -->
-			<!-- END FOOTER -->
-			
-		</div> <!-- end div .mainDiv -->
-	<!-- END LOGIN OR REGISTER FORM -->
-	
-	
-	<!-- BEGIN POPUP RESET PASSWORD FORM -->
-	<form id="formReset" method="post" action="javascript:void(0);">
-		<div class="popupScreen">
-			<img src="Images/reg/close.png">
-			<table>
-				<tr>
-					<td><div class="popupTitle">Reset Your Password</div></td>
-				</tr>
-				<tr>
-					<input type="hidden" name="valid" value="" />
-					<td><input type="email" id="mail"  class="input" name="mail" value="" placeholder="Please enter your e-mail" required /></td>
-				</tr>
-				<tr>
-					<td><input type="submit" id="btnSend"  class="popupBtn" name="btnSubmit" value="Send" /></td>
-				</tr>
-			</table><!-- end table -->
+				<div id="changePassword"  >
+					<a data-toggle="modal" style="color: red" data-target="#myModal2">Change Your Password</a>
+
+				</div>
+			</div>
+		</div>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="popupScreen" style="display: block; margin-top: 100px">
+				<img src="Images/reg/close.png">
+				<table>
+					<tbody><tr>
+						<td><div class="popupTitle">Reset Your Password</div></td>
+					</tr>
+					<tr>
+						<input type="hidden" name="valid" value="672a82874d02c2a9ace91e226ddace3f">
+						<td><input type="email" id="mail" class="input" name="mail" value="" placeholder="Please enter your e-mail" required=""></td>
+					</tr>
+					<tr>
+						<td><input type="submit" id="btnSend" class="popupBtn" name="btnSubmit" value="Send"></td>
+					</tr>
+					</tbody></table><!-- end table -->
+			</div>
+
 		</div><!-- end div .popupScreen -->
-	</form><!-- end form .formReset -->
-	<!-- END POPUP RESET PASSWORD FORM -->
-	
-	<!-- BEGIN POPUP CHANGE PASSWORD FORM -->
-	<form id="formChangePassword" method="post" action="javascript:void(0);">
-		<div class="popupScreen2">
+	</form>-->
+			</div>
+		</div>
+	<div class="modal fade" id="myModal2" role="dialog">
+		<div class="modal-dialog">
+			<div class="popupScreen2" style="display: block; margin-top: 100px">
+				<img src="Images/reg/close.png">
+				<table>
+					<tbody><tr>
+						<td><div class="popupTitle">Change Your Password</div></td>
+					</tr>
+					<form method="post" action="uppw.php"><tr>
+						<input type="hidden" name="valid" value="672a82874d02c2a9ace91e226ddace3f">
+						<td><input type="email" id="mail" class="input" name="mail" value="" placeholder="Please enter your e-mail address" required=""></td>
+					</tr>
+					<tr>
+						<td><input type="password" id="oldpassword" class="input" name="oldPassword" value="" placeholder="Please enter your current password" required=""></td>
+					</tr>
+					<tr>
+						<td><input type="password" id="password" class="input" name="newPassword" value="" placeholder="Please enter your new password" required=""></td>
+					</tr>
+					<tr>
+						<td><input type="password" id="re-password" class="input" name="re-newPassword" value="" placeholder="Please enter your new re-password" required=""></td>
+					</tr>
+					<tr>
+						<td><input type="submit" id="btnSend" class="popupBtn" name="btnSubmit" value="Change"></td>
+					</tr>
+					</tbody></table>\
+				</form><!-- end table -->
+			</div>
+		<!--<div  class="popupScreen2">
 			<img src="Images/reg/close.png">
 			<table>
 				<tr>
@@ -342,6 +368,8 @@
 				</tr>
 			</table><!-- end table -->
 		</div><!-- end div .popupScreen2 -->
+			</div>
+		</div>
 	</form>
 </body>
 </html>
